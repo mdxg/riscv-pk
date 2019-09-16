@@ -158,6 +158,7 @@ void init_first_hart(uintptr_t hartid, uintptr_t dtb)
   // Confirm console as early as possible
   query_uart(dtb);
   query_uart16550(dtb);
+  query_xuartl(dtb);
   query_htif(dtb);
   printm("bbl loader\r\n");
 
