@@ -7,6 +7,7 @@
 #include "fdt.h"
 #include "uart.h"
 #include "uart16550.h"
+#include "xuartl.h"
 #include "finisher.h"
 #include "disabled_hart_mask.h"
 #include "htif.h"

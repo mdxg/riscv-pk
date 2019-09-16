@@ -32,6 +32,7 @@ int xuartl_getchar()
   if (ch < 0) return -1;
   return ch;
   */
+  return 0;
 }
 
 struct xuartl_scan
