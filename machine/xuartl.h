@@ -14,8 +14,8 @@ extern volatile uint32_t* xuartl;
 #define XUARTL_CTRL_REG 3
 
 //==Bits of XUARTL_CTRL_REG
-#define XUARTL_RST_TX_FIFO 0b00001
-#define XUARTL_RST_RX_FIFO 0b00010
+#define XUARTL_RST_TXFIFO 0b00001
+#define XUARTL_RST_RXFIFO 0b00010
 #define XUARTL_ENABLE_INTR 0b10000
 
 //==Bits of XUARTL_STAT_REG
