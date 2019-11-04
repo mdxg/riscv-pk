@@ -8,6 +8,7 @@
 #include "vm.h"
 #include "uart.h"
 #include "uart16550.h"
+#include "xuartl.h"
 #include "finisher.h"
 #include "fdt.h"
 #include "unprivileged_memory.h"
@@ -29,6 +30,8 @@ static uintptr_t mcall_console_putchar(uint8_t ch)
     uart16550_putchar(ch);
   } else if (htif) {
     htif_console_putchar(ch);
+  } else if (xuartl) {
+    xuartl_putchar(ch);
   }
   return 0;
 }

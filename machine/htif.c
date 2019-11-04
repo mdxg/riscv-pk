@@ -147,6 +147,7 @@ void query_htif(uintptr_t fdt)
   struct htif_scan scan;
 
   memset(&cb, 0, sizeof(cb));
+  htif = 0;
   cb.open = htif_open;
   cb.prop = htif_prop;
   cb.done = htif_done;

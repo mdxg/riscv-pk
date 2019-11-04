@@ -4,7 +4,7 @@
 #include "uart.h"
 #include "fdt.h"
 
-volatile uint32_t* uart;
+volatile uint32_t* uart = 0;
 
 void uart_putchar(uint8_t ch)
 {
@@ -69,6 +69,7 @@ void query_uart(uintptr_t fdt)
   struct uart_scan scan;
 
   memset(&cb, 0, sizeof(cb));
+  uart = 0;
   cb.open = uart_open;
   cb.prop = uart_prop;
   cb.done = uart_done;

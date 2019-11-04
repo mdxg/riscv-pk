@@ -22,6 +22,10 @@ size_t plic_ndevs;
 void* kernel_start;
 void* kernel_end;
 
+extern unsigned char _bss_start;
+extern unsigned char _bss_end;
+
+
 static void mstatus_init()
 {
   // Enable FPU
@@ -156,6 +160,9 @@ static void wake_harts()
 
 void init_first_hart(uintptr_t hartid, uintptr_t dtb)
 {
+  for(unsigned char* x = &_bss_start; x < &_bss_end; x++){
+      *x = 0;
+  }
   // Confirm console as early as possible
   query_uart(dtb);
   query_uart16550(dtb);

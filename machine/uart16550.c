@@ -6,7 +6,7 @@
 #include "uart16550.h"
 #include "fdt.h"
 
-volatile uint8_t* uart16550;
+volatile uint8_t* uart16550 = 0;
 // some devices require a shifted register index
 // (e.g. 32 bit registers instead of 8 bit registers)
 static uint32_t uart16550_reg_shift;
@@ -101,6 +101,7 @@ void query_uart16550(uintptr_t fdt)
   struct uart16550_scan scan;
 
   memset(&cb, 0, sizeof(cb));
+  uart16550 =  0;
   cb.open = uart16550_open;
   cb.prop = uart16550_prop;
   cb.done = uart16550_done;

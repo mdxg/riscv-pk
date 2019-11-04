@@ -53,7 +53,7 @@ static void xuartl_open(const struct fdt_scan_node *node, void *extra)
 static void xuartl_prop(const struct fdt_scan_prop *prop, void *extra)
 {
   struct xuartl_scan *scan = (struct xuartl_scan *)extra;
-  if (!strcmp(prop->name, "compatible") && !strcmp((const char*)prop->value, "xlnx,axi-uartlite-2.0")) {
+  if (!strcmp(prop->name, "compatible") && !strcmp((const char*)prop->value, "xlnx,axi-uartlite-1.02.a")) {
     scan->compat = 1;
   } else if (!strcmp(prop->name, "reg")) {
     fdt_get_address(prop->node->parent, prop->value, &scan->reg);
@@ -85,6 +85,7 @@ void query_xuartl(uintptr_t fdt)
   struct xuartl_scan scan;
 
   memset(&cb, 0, sizeof(cb));
+  xuartl = 0;
   cb.open = xuartl_open;
   cb.prop = xuartl_prop;
   cb.done = xuartl_done;

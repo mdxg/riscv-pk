@@ -207,7 +207,7 @@ void query_mem(uintptr_t fdt)
 ///////////////////////////////////////////// HART SCAN //////////////////////////////////////////
 
 static uint32_t hart_phandles[MAX_HARTS];
-uint64_t hart_mask;
+uint64_t hart_mask = 0;
 
 struct hart_scan {
   const struct fdt_scan_node *cpu;

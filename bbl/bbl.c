@@ -13,6 +13,10 @@ extern char _payload_start, _payload_end; /* internal payload */
 static const void* entry_point;
 long disabled_hart_mask;
 
+extern const char _binary_dev_tree_dtb_start;
+extern const char _binary_dev_tree_dtb_end;
+extern const int  _binary_dev_tree_dtb_size;
+
 static uintptr_t dtb_output()
 {
   /*
@@ -114,6 +118,8 @@ void boot_other_hart(uintptr_t unused __attribute__((unused)))
 
 void boot_loader(uintptr_t dtb)
 {
+  volatile uint32_t x = _binary_dev_tree_dtb_start;
+  dtb = (uintptr_t)(&_binary_dev_tree_dtb_start);
   filter_dtb(dtb);
 #ifdef PK_ENABLE_LOGO
   print_logo();
